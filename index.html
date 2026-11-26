@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KLORSS — Redefine Your Edge</title>
+  <meta name="description" content="KLORSS — Bold, minimal, high-end streetwear & contemporary fashion. Explore our latest collections." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
+</head>
+<body>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" id="navLogo">KLORSS</a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#collections" data-i18n="nav_collections">Collections</a></li>
+        <li><a href="#new-arrivals" data-i18n="nav_arrivals">New Arrivals</a></li>
+        <li><a href="#lookbook" data-i18n="nav_lookbook">Lookbook</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="nav__lang-toggle" id="langToggle" aria-label="Switch language">AR</button>
+
+        <button class="nav__theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <button class="nav__cart" id="cartToggle" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="nav__cart-count" id="cartCount">0</span>
+        </button>
+
+        <button class="nav__menu-btn" id="menuToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ MOBILE MENU OVERLAY ═══════════════════ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="#collections" data-i18n="nav_collections">Collections</a></li>
+      <li><a href="#new-arrivals" data-i18n="nav_arrivals">New Arrivals</a></li>
+      <li><a href="#lookbook" data-i18n="nav_lookbook">Lookbook</a></li>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img id="heroBgImg" src="" alt="KLORSS Hero" loading="eager" />
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content reveal">
+      <p class="hero__subtitle" id="heroSubtitle"></p>
+      <h1 class="hero__title" id="heroTitle"></h1>
+      <p class="hero__desc" id="heroDesc"></p>
+      <div class="hero__ctas">
+        <a href="#collections" class="btn btn--primary" id="heroCta1">Explore Collection</a>
+        <a href="#lookbook" class="btn btn--outline" id="heroCta2">View Lookbook</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ MARQUEE ═══════════════════ -->
+  <div class="marquee">
+    <div class="marquee__track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- ═══════════════════ COLLECTIONS ═══════════════════ -->
+  <section class="section collections" id="collections">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="sec_collections_label">Collections</span>
+        <h2 class="section__title" data-i18n="sec_collections_title">Shop by Category</h2>
+      </div>
+
+      <div class="categories reveal" id="categoriesGrid"></div>
+
+      <!-- Category Filters -->
+      <div class="category-filters reveal" id="categoryFilters"></div>
+
+      <!-- Product Grid -->
+      <div class="product-grid reveal" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ NEW ARRIVALS ═══════════════════ -->
+  <section class="section new-arrivals" id="new-arrivals">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" id="dropLabel">Just Dropped</span>
+        <h2 class="section__title" data-i18n="sec_arrivals_title">New Arrivals</h2>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown reveal" id="countdownWrap">
+        <p class="countdown__label" id="countdownLabelText" data-i18n="next_drop_in">Next Drop In</p>
+        <div class="countdown__ready" id="countdownReadyBadge" style="display:none;" data-i18n="available_now">Available Now</div>
+        <div class="countdown__timer" id="countdown">
+          <div class="countdown__block">
+            <span class="countdown__number" id="countDays">00</span>
+            <span class="countdown__unit">Days</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__block">
+            <span class="countdown__number" id="countHours">00</span>
+            <span class="countdown__unit">Hours</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__block">
+            <span class="countdown__number" id="countMins">00</span>
+            <span class="countdown__unit">Mins</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__block">
+            <span class="countdown__number" id="countSecs">00</span>
+            <span class="countdown__unit">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrivals-grid reveal" id="arrivalsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ LOOKBOOK ═══════════════════ -->
+  <section class="section lookbook" id="lookbook">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="sec_lookbook_label">Campaign</span>
+        <h2 class="section__title" data-i18n="sec_lookbook_title">Lookbook</h2>
+      </div>
+
+      <div class="lookbook-grid reveal" id="lookbookGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <section class="section about" id="about">
+    <div class="about__split">
+      <div class="about__image reveal">
+        <img id="aboutImg" src="" alt="About Brand" loading="lazy" />
+      </div>
+      <div class="about__content reveal">
+        <span class="section__label" id="aboutLabel">Our Story</span>
+        <h2 class="section__title" id="aboutTitle"></h2>
+        <p id="aboutP1"></p>
+        <p id="aboutP2"></p>
+        <div class="about__values" id="aboutValues"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ NEWSLETTER ═══════════════════ -->
+  <section class="section newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <span class="section__label" data-i18n="sec_newsletter_label">Stay Connected</span>
+        <h2 class="newsletter__title" id="newsletterTitle"></h2>
+        <p class="newsletter__desc" id="newsletterDesc"></p>
+        <form class="newsletter__form" id="newsletterForm">
+          <div class="newsletter__input-wrap">
+            <input type="email" id="newsletterEmail" placeholder="Your email address" required />
+            <button type="submit" class="btn btn--primary" data-i18n="btn_subscribe">Subscribe</button>
+          </div>
+        </form>
+        <p class="newsletter__note" id="newsletterNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ INSTAGRAM FEED ═══════════════════ -->
+  <section class="section insta-feed">
+    <div class="section__header reveal">
+      <span class="section__label" id="instaHandle">@klorss</span>
+      <h2 class="section__title" data-i18n="sec_follow_title">Follow Us</h2>
+    </div>
+    <div class="insta-grid reveal" id="instaGrid"></div>
+  </section>
+
+  <!-- ═══════════════════ RETURN POLICY ═══════════════════ -->
+  <section class="section return-policy" id="returnPolicy">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="sec_policy_label">Policy</span>
+        <h2 class="section__title" id="returnPolicyTitle">سياسة الاستبدال والاسترجاع</h2>
+      </div>
+      <div class="return-policy__content reveal" id="returnPolicyContent"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="sec_reviews_label">Social Proof</span>
+        <h2 class="section__title" data-i18n="sec_reviews_title">تجارب العملاء والتوثيق</h2>
+      </div>
+      <div class="testimonials-grid reveal" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo" id="footerLogo">KLORSS</a>
+          <p id="footerTagline"></p>
+          <div class="footer__socials">
+            <a href="#" id="footerInstaLink" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="#" id="footerTiktokLink" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+            <a href="#" id="footerPinterestLink" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4 data-i18n="footer_shop">Shop</h4>
+          <ul>
+            <li><a href="#new-arrivals" data-i18n="nav_arrivals">New Arrivals</a></li>
+            <li><a href="#collections" data-i18n="nav_collections">Collections</a></li>
+            <li><a href="#lookbook" data-i18n="nav_lookbook">Lookbook</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 data-i18n="footer_help">Help</h4>
+          <ul>
+            <li><a href="#" id="footerShippingBtn" data-i18n="footer_shipping">Shipping: All Egypt Governorates</a></li>
+            <li><a href="#returnPolicy" data-i18n="footer_policy">Return Policy</a></li>
+            <li><a href="#" id="footerSizeGuideBtn" data-i18n="size_guide">Size Guide</a></li>
+            <li><a href="https://wa.me/201092207481" id="footerWhatsappLink" target="_blank">WhatsApp: 01092207481</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 data-i18n="footer_more">More</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+            <li><a href="#testimonials" data-i18n="footer_reviews">Reviews &amp; Proof</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p id="footerCopyright">&copy; 2026 KLORSS. All rights reserved.</p>
+        <div class="footer__payments">
+          <span>Vodafone Cash</span>
+          <span>InstaPay</span>
+          <span>All Egypt Shipping</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════ CART SIDEBAR ═══════════════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h3 data-i18n="your_bag">Your Bag</h3>
+      <button class="cart-sidebar__close" id="cartClose" aria-label="Close cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-sidebar__items" id="cartItems"></div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;">
+      <div class="cart-customer-fields">
+        <input type="text" id="custName" class="cart-input" placeholder="الاسم بالكامل / Full Name" required />
+        <input type="tel" id="custPhone" class="cart-input" placeholder="رقم الموبايل / Phone Number" required />
+        <input type="text" id="custAddress" class="cart-input" placeholder="العنوان بالتفصيل / Detailed Address" required />
+      </div>
+      <div class="cart-shipping-calc">
+        <label for="shippingGovSelect" data-i18n="ship_calc_label">Shipping Calculator — Select Governorate</label>
+        <select id="shippingGovSelect" class="cart-shipping-select"></select>
+      </div>
+      <div class="cart-payment-box">
+        <label for="paymentMethod" data-i18n="payment_method_label">Payment Method</label>
+        <select id="paymentMethod" class="cart-shipping-select">
+          <option value="vodafone">Vodafone Cash — فودافون كاش</option>
+          <option value="instapay">InstaPay — إنستا باي</option>
+        </select>
+        <div class="cart-payment-hint" id="paymentHint"></div>
+      </div>
+      <div class="cart-summary-row">
+        <span data-i18n="subtotal">Subtotal</span>
+        <span id="cartSubtotal">0 EGP</span>
+      </div>
+      <div class="cart-summary-row">
+        <span data-i18n="shipping">Shipping</span>
+        <span id="cartShippingCost">0 EGP</span>
+      </div>
+      <div class="cart-sidebar__total">
+        <span data-i18n="total">Total</span>
+        <span id="cartTotal">0 EGP</span>
+      </div>
+      <button class="btn btn--primary btn--full" id="checkoutWhatsappBtn">تأكيد الطلب واتساب (01092207481)</button>
+      <p class="cart-sidebar__shipping" data-i18n="cart_shipping_note">🚚 Shipping available to all Egypt governorates • Vodafone Cash / InstaPay</p>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════ PRODUCT QUICK VIEW MODAL ═══════════════════ -->
+  <div class="modal-overlay" id="productModalOverlay"></div>
+  <div class="modal modal--wide" id="productModal">
+    <div class="modal__header">
+      <h3 data-i18n="product_details">Product Details</h3>
+      <button class="modal__close" id="productModalClose" aria-label="Close product modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body">
+      <div class="qv-grid">
+        <div class="qv-gallery">
+          <div class="qv-main-img-wrap" id="qvZoomWrap">
+            <img id="qvMainImg" src="" alt="" />
+            <span class="qv-zoom-hint" data-i18n="click_zoom">Click to zoom</span>
+          </div>
+          <div class="qv-thumbs" id="qvThumbs"></div>
+        </div>
+        <div class="qv-info">
+          <span class="qv-status" id="qvBadge"></span>
+          <h2 class="qv-title" id="qvTitle"></h2>
+          <p class="qv-price" id="qvPrice"></p>
+          <div class="qv-desc-box">
+            <p class="qv-desc" id="qvDesc"></p>
+            <p class="qv-desc-side" id="qvDescSide"></p>
+          </div>
+          <div class="qv-sizes-wrap">
+            <label data-i18n="select_size">Select Size</label>
+            <div class="product-card__sizes" id="qvSizes"></div>
+          </div>
+          <div class="qv-actions">
+            <button class="btn btn--primary" id="qvAddBtn" data-i18n="add_to_bag">Add to Bag</button>
+            <button class="btn btn--outline" id="qvSizeGuideBtn" data-i18n="size_guide">Size Guide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SHIPPING RATES MODAL ═══════════════════ -->
+  <div class="modal-overlay" id="shippingModalOverlay"></div>
+  <div class="modal" id="shippingModal">
+    <div class="modal__header">
+      <h3 data-i18n="shipping_rates_title">Egypt Shipping Rates</h3>
+      <button class="modal__close" id="shippingModalClose" aria-label="Close shipping modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body">
+      <p class="ship-modal-note" id="shipModalThreshold"></p>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th data-i18n="gov_col">Governorate</th>
+            <th data-i18n="price_col">Shipping Cost</th>
+          </tr>
+        </thead>
+        <tbody id="shipModalBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SIZE GUIDE MODAL ═══════════════════ -->
+  <div class="modal-overlay" id="sizeModalOverlay"></div>
+  <div class="modal" id="sizeModal">
+    <div class="modal__header">
+      <h3 data-i18n="size_guide">Size Guide</h3>
+      <button class="modal__close" id="sizeModalClose" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__tabs">
+        <button class="modal__tab active" data-tab="tops">Tops</button>
+        <button class="modal__tab" data-tab="bottoms">Bottoms</button>
+        <button class="modal__tab" data-tab="outerwear">Outerwear</button>
+      </div>
+      <table class="size-table" id="sizeTable">
+        <thead>
+          <tr><th>Size</th><th>Chest (in)</th><th>Waist (in)</th><th>Length (in)</th></tr>
+        </thead>
+        <tbody id="sizeTableBody"></tbody>
+      </table>
+      <p class="size-note" data-i18n="size_note">Measurements are approximate. For the best fit, we recommend sizing up if you're between sizes.</p>
+    </div>
+  </div>
+
+  <script src="js/store.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
